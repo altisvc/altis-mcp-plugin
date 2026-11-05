@@ -1,10 +1,12 @@
-# ChatGPT
+# Altis plugin for ChatGPT
 
-The ChatGPT plugin is built from the same repo and skills as the Claude plugin, in OpenAI's plugin format.
+Altis research inside ChatGPT, with the same skills as the Claude plugin. You sign in with your Altis account when
+you connect: any account can search what Altis covers and has published, and an all-access account reads the research
+itself. Support: [support@altis.vc](mailto:support@altis.vc).
 
 ## How it is put together
 
-- The package (`altis-chatgpt-<version>.zip`) carries `plugin.json`, the skills, and `.app.json`.
+- The package (`altis-chatgpt-<version>.zip`) carries `plugin.json`, the skills (`skills` here is a symlink to `claude/skills`), and `.app.json`.
 - The connector is the Altis MCP server (`https://mcp.altis.vc/mcp`) registered in ChatGPT
   (chatgpt.com/plugins › Add › **Add custom MCP server** › Create as a plugin). `.app.json` links the package to it,
   and `plugin.json` points at `.app.json` (`extensions.com.openai.apps`).
@@ -12,6 +14,9 @@ The ChatGPT plugin is built from the same repo and skills as the Claude plugin, 
   the repo for the desktop install (`scripts/install-chatgpt-local.sh`).
 
 ## Install or update
+
+Download the newest package, `altis-chatgpt-<version>.zip`, from
+[Releases](https://github.com/altisvc/altis-mcp-plugin/releases).
 
 - **First time:** chatgpt.com/plugins › **Add** › **Upload plugin archive**.
 - **Update:** open the existing plugin › ⋯ › **Upload new version**.

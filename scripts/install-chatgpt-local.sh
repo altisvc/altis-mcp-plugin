@@ -8,7 +8,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 scripts/package.sh >/dev/null
-version=$(python3 -c 'import json; print(json.load(open("plugin.json"))["version"])')
+version=$(python3 -c 'import json; print(json.load(open("chatgpt/plugin.json"))["version"])')
 
 dest="$HOME/.codex/plugins/altis"
 rm -rf "$dest"

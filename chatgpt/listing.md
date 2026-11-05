@@ -17,6 +17,6 @@ account reads the research itself.
 - Open the Altis report on Harvey and summarise the competitive section.
 - Which companies in AI training data does Altis cover, and which have a full report?
 
-**Links:** https://www.altis.vc · privacy: https://www.altis.vc/privacy · support: support@altis.vc
+**Links:** https://www.altis.vc · privacy: https://www.altis.vc/privacy · terms: https://www.altis.vc/terms · support: support@altis.vc
 
 **Icon:** the Altis mark, `.claude-plugin/icon.png` (1024×1024 PNG)

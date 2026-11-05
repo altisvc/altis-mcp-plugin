@@ -22,6 +22,11 @@ Download the newest package, `altis-chatgpt-<version>.zip`, from
 - **Update:** open the existing plugin › ⋯ › **Upload new version**.
 - **Share with a workspace:** Personal › ⋯ on Altis › **Publish** (workspace admin).
 
+## Public directory
+
+Upload `altis-chatgpt-public-<version>.zip` at platform.openai.com/plugins. It carries `mcp.json` and leaves out
+`.app.json` and `apps`, which public submission refuses. The connector is then connected in the portal.
+
 ## Connector only, without the plugin
 
 Settings › Apps & Connectors › Advanced › **Developer mode** on, then Create:

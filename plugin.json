@@ -1,0 +1,42 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "altis",
+  "version": "0.1.7",
+  "description": "Search and read Altis research — company reports, landscapes, scans, pulses and expert calls — from ChatGPT. Sign in with your Altis account.",
+  "author": {
+    "name": "Altis",
+    "email": "support@altis.vc",
+    "url": "https://www.altis.vc"
+  },
+  "homepage": "https://www.altis.vc",
+  "repository": "https://github.com/altisvc/altis-mcp-plugin",
+  "keywords": [
+    "research",
+    "venture",
+    "diligence",
+    "mcp",
+    "altis"
+  ],
+  "extensions": {
+    "com.openai": {
+      "apps": "./.app.json",
+      "interface": {
+        "displayName": "Altis",
+        "shortDescription": "Altis research in ChatGPT.",
+        "longDescription": "Search and read Altis research — company reports, market landscapes, scans, pulses, signals and expert-call transcripts — exactly as published on altis.vc. Answers cite the Altis pieces they come from, with links. Read-only. Sign in with your Altis account when you connect: any account can search what Altis covers and has published, and an all-access account reads the research itself.",
+        "developerName": "Altis",
+        "category": "Research",
+        "capabilities": [
+          "Read"
+        ],
+        "websiteURL": "https://www.altis.vc",
+        "privacyPolicyURL": "https://www.altis.vc/privacy",
+        "defaultPrompt": [
+          "Brief me on Mercor in 300 words using Altis research.",
+          "What has Altis published on nuclear fission since September?",
+          "Open the Altis report on Harvey and summarise the competitive section."
+        ]
+      }
+    }
+  }
+}

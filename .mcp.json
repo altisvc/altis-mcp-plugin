@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "altis": {
+      "type": "http",
+      "url": "https://mcp.altis.vc/mcp"
+    }
+  }
+}

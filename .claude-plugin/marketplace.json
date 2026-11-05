@@ -1,0 +1,30 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "altis",
+  "owner": {
+    "name": "Altis",
+    "email": "support@altis.vc"
+  },
+  "metadata": {
+    "description": "Altis research in Claude: covered companies, sectors, reports, scans and expert calls, read through the Altis MCP.",
+    "version": "0.1.7"
+  },
+  "plugins": [
+    {
+      "name": "altis",
+      "source": "./",
+      "version": "0.1.7",
+      "category": "research",
+      "description": "Search and read Altis research from Claude. Sign in with your Altis account the first time you use it.",
+      "author": {
+        "name": "Altis"
+      },
+      "tags": [
+        "research",
+        "venture",
+        "diligence",
+        "mcp"
+      ]
+    }
+  ]
+}

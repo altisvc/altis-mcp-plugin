@@ -1,0 +1,20 @@
+{
+  "name": "altis",
+  "description": "Altis research in Claude. Connects the Altis MCP (sign in with your Altis account) and adds skills for researching companies and sectors with it, plus /altis:brief.",
+  "version": "0.1.7",
+  "author": {
+    "name": "Altis",
+    "url": "https://www.altis.vc"
+  },
+  "repository": "https://github.com/altisvc/altis-mcp-plugin",
+  "keywords": [
+    "research",
+    "venture",
+    "diligence",
+    "mcp",
+    "altis"
+  ],
+  "homepage": "https://www.altis.vc",
+  "license": "MIT",
+  "privacyPolicyUrl": "https://www.altis.vc/privacy"
+}

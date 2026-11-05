@@ -25,7 +25,7 @@
         "shortDescription": "Altis research in ChatGPT.",
         "longDescription": "Search and read Altis research — company reports, market landscapes, scans, pulses, signals and expert-call transcripts — exactly as published on altis.vc. Answers cite the Altis pieces they come from, with links. Read-only. Sign in with your Altis account when you connect: any account can search what Altis covers and has published, and an all-access account reads the research itself.",
         "developerName": "Altis",
-        "category": "Research",
+        "category": "Education & Research",
         "capabilities": [
           "Read"
         ],
@@ -35,7 +35,11 @@
           "Brief me on Mercor in 300 words using Altis research.",
           "What has Altis published on nuclear fission since September?",
           "Open the Altis report on Harvey and summarise the competitive section."
-        ]
+        ],
+        "termsOfServiceURL": "https://www.altis.vc/terms",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png",
+        "supportURL": "https://mcp.altis.vc/support"
       }
     }
   }

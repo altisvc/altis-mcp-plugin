@@ -3,6 +3,7 @@
 #   dist/altis-claude-<version>.zip    Claude  (the claude/ folder)
 #   dist/altis-chatgpt-<version>/      ChatGPT (chatgpt/plugin.json, .app.json, and the skills from
 #   dist/altis-chatgpt-<version>.zip   claude/skills) — the folder the desktop app installs, and a zip of it
+#   dist/altis-chatgpt-public-<version>.zip  ChatGPT, for OpenAI's public directory (mcp.json, no .app.json)
 #
 # The version lives in four places and must match: claude/.claude-plugin/plugin.json,
 # .claude-plugin/marketplace.json, chatgpt/plugin.json and the top heading of CHANGELOG.md.
@@ -66,8 +67,28 @@ rm -rf "$dir" "$dir.zip"
 mkdir -p "$dir"
 cp chatgpt/plugin.json chatgpt/README.md chatgpt/.app.json LICENSE "$dir/"
 cp -R claude/skills "$dir/"
+mkdir -p "$dir/assets"
+cp claude/.claude-plugin/icon.png "$dir/assets/icon.png"
 (cd "$dir" && zip -qr -X "../altis-chatgpt-$version.zip" . -x '*.DS_Store')
 echo "$dir/ and $dir.zip"
+
+# ChatGPT, for OpenAI's public directory. Public submission refuses `apps` and .app.json, so this
+# package drops them and carries mcp.json instead; the connector is then connected in OpenAI's portal.
+public="dist/altis-chatgpt-public-$version"
+rm -rf "$public" "$public.zip"
+cp -R "$dir" "$public"
+rm "$public/.app.json"
+cp chatgpt/mcp.json "$public/"
+python3 - "$public/plugin.json" <<'PY_INNER'
+import json, sys
+path = sys.argv[1]
+manifest = json.load(open(path))
+del manifest["extensions"]["com.openai"]["apps"]
+json.dump(manifest, open(path, "w"), indent=2, ensure_ascii=False)
+open(path, "a").write("\n")
+PY_INNER
+(cd "$public" && zip -qr -X "../altis-chatgpt-public-$version.zip" . -x '*.DS_Store')
+echo "$public/ and $public.zip"
 echo "from $(git rev-parse --short HEAD)"
 
 if $release; then

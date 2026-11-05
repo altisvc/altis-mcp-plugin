@@ -12,7 +12,7 @@
   "plugins": [
     {
       "name": "altis",
-      "source": "./",
+      "source": "./claude",
       "version": "0.1.7",
       "category": "research",
       "description": "Search and read Altis research from Claude. Sign in with your Altis account the first time you use it.",

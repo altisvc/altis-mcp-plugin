@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Build both plugin packages from this repo, at the one version they share:
-#   dist/altis-claude-<version>.zip    Claude  (.claude-plugin/plugin.json, .mcp.json, skills, commands)
-#   dist/altis-chatgpt-<version>/      ChatGPT (plugin.json, mcp.json, skills) — the folder the desktop
-#   dist/altis-chatgpt-<version>.zip   app installs, and a zip of it for submission
+#   dist/altis-claude-<version>.zip    Claude  (the claude/ folder)
+#   dist/altis-chatgpt-<version>/      ChatGPT (chatgpt/plugin.json, .app.json, and the skills from
+#   dist/altis-chatgpt-<version>.zip   claude/skills) — the folder the desktop app installs, and a zip of it
 #
-# The version lives in four places and must match: .claude-plugin/plugin.json,
-# .claude-plugin/marketplace.json, plugin.json (ChatGPT) and the top heading of CHANGELOG.md.
+# The version lives in four places and must match: claude/.claude-plugin/plugin.json,
+# .claude-plugin/marketplace.json, chatgpt/plugin.json and the top heading of CHANGELOG.md.
 # This refuses to build if they disagree, or if the Claude plugin does not validate.
 #
 # Release: bump the version in the three manifests, add a CHANGELOG entry, commit, then
@@ -19,13 +19,13 @@ release=false
 [[ "${1:-}" == "--release" ]] && release=true
 
 ver() { python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["version"])' "$1"; }
-version=$(ver .claude-plugin/plugin.json)
-chatgpt=$(ver plugin.json)
+version=$(ver claude/.claude-plugin/plugin.json)
+chatgpt=$(ver chatgpt/plugin.json)
 market=$(python3 -c 'import json; d=json.load(open(".claude-plugin/marketplace.json")); print(" ".join(sorted({d["metadata"]["version"], *[p["version"] for p in d["plugins"]]})))')
 changelog=$(sed -n 's/^## \([0-9][0-9.]*\) .*/\1/p' CHANGELOG.md | head -1)
 
 if [[ "$market" != "$version" || "$chatgpt" != "$version" || "$changelog" != "$version" ]]; then
-  echo "version mismatch: .claude-plugin/plugin.json=$version marketplace.json=$market plugin.json=$chatgpt CHANGELOG.md=$changelog" >&2
+  echo "version mismatch: claude/.claude-plugin/plugin.json=$version marketplace.json=$market chatgpt/plugin.json=$chatgpt CHANGELOG.md=$changelog" >&2
   exit 1
 fi
 if $release && [[ -n "$(git status --porcelain)" ]]; then
@@ -45,9 +45,8 @@ trap 'rm -rf "$stage"' EXIT
 mkdir -p dist
 
 # Claude
-mkdir -p "$stage/claude/.claude-plugin"
-cp .claude-plugin/plugin.json .claude-plugin/icon.png "$stage/claude/.claude-plugin/"
-cp -R .mcp.json skills commands README.md LICENSE "$stage/claude/"
+mkdir -p "$stage/claude"
+cp -R claude/. "$stage/claude/"
 if command -v claude >/dev/null 2>&1; then
   claude plugin validate "$stage/claude" | tail -1
 fi
@@ -59,13 +58,14 @@ echo "$out ($(wc -c < "$out" | tr -d ' ') bytes)"
 # ChatGPT. The upload at chatgpt.com/plugins marks a plugin that bundles its own MCP server
 # (mcp.json) as desktop-only (2026-10-28), so the web package leaves mcp.json out. The MCP comes
 # from the server registered in ChatGPT ("Add custom MCP server" › "Create as a plugin"), which
-# .app.json maps by its plugin_asdk_app_… id once that file exists; plugin.json must then carry
-# "apps": "./.app.json" under extensions.com.openai. mcp.json stays in the repo for the desktop app.
+# .app.json maps by its plugin_asdk_app_… id; plugin.json carries "apps": "./.app.json" under
+# extensions.com.openai. mcp.json stays in the repo for the desktop app. The skills live in
+# claude/skills, because the Claude directory reads only that folder, and are copied in here.
 dir="dist/altis-chatgpt-$version"
 rm -rf "$dir" "$dir.zip"
 mkdir -p "$dir"
-cp -R plugin.json skills README.md LICENSE "$dir/"
-if [[ -f .app.json ]]; then cp .app.json "$dir/"; fi
+cp chatgpt/plugin.json chatgpt/README.md chatgpt/.app.json LICENSE "$dir/"
+cp -R claude/skills "$dir/"
 (cd "$dir" && zip -qr -X "../altis-chatgpt-$version.zip" . -x '*.DS_Store')
 echo "$dir/ and $dir.zip"
 echo "from $(git rev-parse --short HEAD)"

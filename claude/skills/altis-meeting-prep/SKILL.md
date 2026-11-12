@@ -7,7 +7,7 @@ description: Use when the user is preparing for a meeting, call or diligence ses
 
 Follow the altis-research skill for how to call the tools. Then:
 
-1. `lookup_company` → `get_company`. Note the coverage rung; if Altis has no report, say so up front.
+1. `lookup_company` → `get_company`. Note its coverage level (what Altis has published on it); if Altis has no report, say so up front.
 2. If there is a report: `asset_outline`, then `fetch_asset` its summary and key debates.
 3. `find_text` across the company's pieces for what a meeting turns on: `any_of` such as
    ["pricing", "churn", "retention", "competition", "moat", "risk"].

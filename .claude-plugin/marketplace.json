@@ -7,13 +7,13 @@
   },
   "metadata": {
     "description": "Altis research in Claude: covered companies, sectors, reports, scans and expert calls, read through the Altis MCP.",
-    "version": "0.1.7"
+    "version": "0.1.8"
   },
   "plugins": [
     {
       "name": "altis",
       "source": "./claude",
-      "version": "0.1.7",
+      "version": "0.1.8",
       "category": "research",
       "description": "Search and read Altis research from Claude. Sign in with your Altis account the first time you use it.",
       "author": {

@@ -3,6 +3,11 @@
 What changed for people using the Altis plugin in Claude or ChatGPT. Each version is a
 [release](https://github.com/altisvc/altis-mcp-plugin/releases) with both packages attached.
 
+## 0.1.8 — 2026-11-12
+
+The skills describe a company's coverage by what Altis has published on it ("Altis has a Company
+Report on Harvey") and read the server's new `coverage_level` field.
+
 ## 0.1.7 — 2026-11-03
 
 New skill **altis-brief**: a 300-word brief on one company, with sources. It was a Claude-only

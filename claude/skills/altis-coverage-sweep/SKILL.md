@@ -23,12 +23,12 @@ and topics instead.
    newsletters they only received, their own company, generic tools (Zoom, Slack, Google…),
    and people's names.
 3. Check each against Altis:
-   - a company → `lookup_company`, then `get_company` for its rung and pieces;
+   - a company → `lookup_company`, then `get_company` for its coverage level and pieces;
    - a sector or theme → `lookup_sector` / `search`;
    - a topic that is neither → `semantic_search`.
 4. Report, grouped by where it came up:
    - **Altis has something on this:** the company or topic, where it came up (the email subject or
-     meeting title and date), the coverage rung, and the best piece with its altis.vc link (the
+     meeting title and date), its coverage level (what Altis has published on it), and the best piece with its altis.vc link (the
      report if there is one, else the newest landscape, pulse or signal).
    - **Checked, no Altis coverage:** a plain list, so the user sees the sweep was thorough.
 

@@ -1,7 +1,7 @@
 {
   "name": "altis",
   "description": "Altis research in Claude. Connects the Altis MCP (sign in with your Altis account) and adds skills for researching companies and sectors with it, plus /altis:brief.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": {
     "name": "Altis",
     "url": "https://www.altis.vc"

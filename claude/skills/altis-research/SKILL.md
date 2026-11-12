@@ -19,7 +19,7 @@ the research itself, say it needs a full Altis account and point them to https:/
 ## A question about one named company
 
 1. `lookup_company` with the name → its slug (or `resolve_url` if you were given an altis.vc link).
-2. `get_company` with the slug → coverage rung, sector, and the pieces with their `asset_id`s.
+2. `get_company` with the slug → coverage level (`coverage_level_label`), sector, and the pieces with their `asset_id`s.
 3. `asset_outline` on the report → its sections and where they start.
 4. `fetch_asset` the sections you need (`from_heading`), or `find_text` for a specific fact,
    number, name or quote across the company's pieces.
@@ -49,7 +49,7 @@ An empty `lookup_sector` does not mean Altis has nothing: check `search` and
 ## Always
 
 - **Cite every piece you used** by its title, with the altis.vc link the tools return.
-- **Say plainly when Altis does not cover something** (`coverage=false`, or rung `overview`).
+- **Say plainly when Altis does not cover something** (`coverage=false`, or `coverage_level` `overview`).
   Never fill the gap from memory as if it were Altis research.
 - **Expert calls:** attribute a quote to the role shown (e.g. "former VP Sales at a competitor").
   Never guess a person's name or employer.
